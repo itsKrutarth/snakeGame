@@ -33,6 +33,13 @@ while game_is_on:
     if(snake.getHead().xcor()>280 or snake.getHead().xcor()<-280 or snake.getHead().ycor()>280 or snake.getHead().ycor()<-280):
         game_is_on= False
         scoreboard.GameOver(score=score)
+    for turtle in snake.turtles:
+        if (turtle == snake.getHead()):
+            pass
+        elif(snake.getHead().distance(turtle)<10):
+            game_is_on= False
+            scoreboard.GameOver(score=score)
+            break
     screen.update()
 
 
