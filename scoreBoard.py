@@ -10,4 +10,5 @@ class Scoreboard():
         self.turtle.goto(0, 270)
     
     def scoreUpdate(self, score):
+        self.turtle.clear()
         self.turtle.write(f"Score: {score}", False, align="center", font=("Arial", 24, "normal"))
