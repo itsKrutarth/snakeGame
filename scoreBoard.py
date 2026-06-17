@@ -8,7 +8,16 @@ class Scoreboard():
         self.turtle.color("white")
         self.turtle.hideturtle()
         self.turtle.goto(0, 270)
+
     
     def scoreUpdate(self, score):
         self.turtle.clear()
         self.turtle.write(f"Score: {score}", False, align="center", font=("Arial", 24, "normal"))
+
+    def GameOver(self, score):
+        self.turtle2 = Turtle()
+        self.turtle2.penup()
+        self.turtle2.hideturtle()
+        self.turtle2.color("white")
+        self.turtle2.goto(0, 0)
+        self.turtle2.write(f"GAME OVER :( Your Score: {score}", False, align="center", font=("Arial", 24, "normal"))

@@ -30,6 +30,9 @@ while game_is_on:
         food.refresh()
         snake.addSegment()
         scoreboard.scoreUpdate(score=score)
+    if(snake.getHead().xcor()>280 or snake.getHead().xcor()<-280 or snake.getHead().ycor()>280 or snake.getHead().ycor()<-280):
+        game_is_on= False
+        scoreboard.GameOver(score=score)
     screen.update()
 
 
