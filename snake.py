@@ -27,6 +27,23 @@ class Snake:
             self.turtles[i].goto(x, y)
         self.turtles[0].forward(MOVE_DISTANCE)
 
+    def getHead(self):
+        return self.turtles[0]
+    
+    def scoreBoard(self, score):
+        self.turtles[0].write("Score: {score}", True, align="center", move = False)
+        self.turtles[0].write((0, 280), True)
+
+    def addSegment(self):
+        turtle = Turtle("square")
+        turtle.penup()
+        turtle.color("white")
+        x =self.turtles[-1].xcor()
+        y= self.turtles[-1].ycor()
+        turtle.goto(x,y)
+        turtle.speed(10)
+        self.turtles.append(turtle)
+
     def Up(self):
         if(self.turtles[0].heading()!=270):
             self.turtles[0].setheading(90)
