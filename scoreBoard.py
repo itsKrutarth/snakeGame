@@ -10,14 +10,18 @@ class Scoreboard():
         self.turtle.goto(0, 270)
 
     
-    def scoreUpdate(self, score):
+    def scoreUpdate(self, score, highScore):
         self.turtle.clear()
-        self.turtle.write(f"Score: {score}", False, align="center", font=("Arial", 24, "normal"))
+        self.turtle.write(f"Score: {score} Current High Score: {highScore}", False, align="center", font=("Arial", 24, "normal"))
 
-    def GameOver(self, score):
+
+    def GameOver(self, score, highScore):
         self.turtle2 = Turtle()
         self.turtle2.penup()
         self.turtle2.hideturtle()
         self.turtle2.color("white")
         self.turtle2.goto(0, 0)
-        self.turtle2.write(f"GAME OVER :( Your Score: {score}", False, align="center", font=("Arial", 24, "normal"))
+        if(score>highScore):
+            self.turtle2.write(f"GAME OVER! NEW HIGH SCORE!!! {score}. Current High Score: {highScore}",False, align="center", font=("Arial", 24, "normal"))
+        else:
+            self.turtle2.write(f"GAME OVER :( Your Score: {score}. Current High Score: {highScore}",False, align="center", font=("Arial", 24, "normal"))

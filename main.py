@@ -16,6 +16,10 @@ snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
 score = 0
+highScore = 0
+with open("highScore.txt", mode="r") as file:
+    highScore = int(file.read())
+
 screen.listen()
 screen.onkey(snake.Up, "Up")
 screen.onkey(snake.Down, "Down")
@@ -29,18 +33,22 @@ while game_is_on:
         score=score+1
         food.refresh()
         snake.addSegment()
-        scoreboard.scoreUpdate(score=score)
+        scoreboard.scoreUpdate(score=score, highScore=highScore)
     if(snake.getHead().xcor()>280 or snake.getHead().xcor()<-280 or snake.getHead().ycor()>280 or snake.getHead().ycor()<-280):
         game_is_on= False
-        scoreboard.GameOver(score=score)
+        scoreboard.GameOver(score=score, highScore=highScore)
     for turtle in snake.turtles[1:len(snake.turtles)]:
         # if (turtle == snake.getHead()):
         #     pass
         if(snake.getHead().distance(turtle)<10):
             game_is_on= False
-            scoreboard.GameOver(score=score)
+            scoreboard.GameOver(score=score, highScore=highScore)
             break
     screen.update()
+    if(score>highScore):
+        highScore=score
 
+with open("highScore.txt", mode="w") as file:
+    file.write(str(highScore))
 
 screen.exitonclick()
